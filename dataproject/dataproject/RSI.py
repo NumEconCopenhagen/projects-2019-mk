@@ -30,51 +30,50 @@ def prices(name, start=start, end=end):
     return pandas_datareader.iex.daily.IEXDailyReader(name, start, end).read()
 
 
-tesla = prices(ticker, start,end)
-tesla.reset_index(inplace=True)
+df = prices(ticker, start,end)
+df.reset_index(inplace=True)
 
 
 #%%
-close = tesla['close'].values
+close = df['close'].values
 #%%
 rsi = talib.RSI(close, timeperiod = 14)
 
 
-tesla["RSI"]= rsi
-tesla["Overbought"] = 70
-tesla["Oversold"] = 30
+df["RSI"]= rsi
+df["Overbought"] = 70
+df["Oversold"] = 30
 #%%
-tesla.head(n=20)
-#%%
-help(go.Scatter)
+df.head(n=20)
+
 #%%
 trace1 = go.Scatter(
-    y=tesla['RSI'],
-    x=tesla['date'],    
+    y=df['RSI'],
+    x=df['date'],    
     name = "RSI",
     line = dict(color = '#7F7F7F'),
     )
 
 #%%
 trace2 = go.Scatter(
-    y=tesla['Overbought'],
-    x=tesla['date'],   
+    y=df['Overbought'],
+    x=df['date'],   
     name = "Overbought",
     line = dict(color = '#63c442'),
     hoverinfo='none'
     )
 #%%
 trace3 = go.Scatter(
-    y=tesla['Oversold'],
-    x=tesla['date'],   
+    y=df['Oversold'],
+    x=df['date'],   
     name = "Oversold",
     line = dict(color = '#705d65'),
     hoverinfo='none'
     )
 #%%
 trace4 = go.Scatter(
-    y=tesla['close'],
-    x=tesla['date'],   
+    y=df['close'],
+    x=df['date'],   
     name = "Price",
     line = dict(color = '#2ed362'),
     )
