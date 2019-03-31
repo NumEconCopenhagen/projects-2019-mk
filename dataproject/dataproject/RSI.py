@@ -9,25 +9,32 @@ import talib
 import cufflinks as cf
 import pandas as pd
 from datetime import datetime
+from pytrends.request import TrendReq  #imports pytrends for loading google trends data
+pytrends = TrendReq(hl='en-US', tz=360)
 from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
 ## Making Offline interactive charts
 init_notebook_mode(connected = False)
-
 cf.go_offline()
 
 
 #%%
+#%%
+def combine_data_frames(df1, df2):
+
+        return df1.join(df2, how='outer')
 
 
 #%%
 start = datetime(2018,1,1)
 end = datetime(2018,12,31)
-ticker = 'TSLA'
+ticker = 'NVDA'
 
-#%%
-def prices(name, start=start, end=end):
-    '''returns a dataframe with stock-information for a given company'''
-    return pandas_datareader.iex.daily.IEXDailyReader(name, start, end).read()
+
+
+ticker_search = searches(ticker)
+
+
+ticker_search.head()
 
 
 df = prices(ticker, start,end)
@@ -45,6 +52,11 @@ df["Overbought"] = 70
 df["Oversold"] = 30
 #%%
 df.head(n=20)
+
+combine_data_frames(df,ticker_search)
+
+
+
 
 #%%
 trace1 = go.Scatter(
