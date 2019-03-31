@@ -1,10 +1,11 @@
+#%%
 import pandas_datareader
 from datetime import datetime
 from pytrends.request import TrendReq  #imports pytrends for loading google trends data
 pytrends = TrendReq(hl='en-US', tz=360)
 
-
-
+start = datetime(2018,1,1)
+end = datetime(2018,12,31)
 
 #%%
 def prices(name, start=start, end=end):
@@ -29,7 +30,7 @@ def searches(*kw_list):
             
     Returns:
             The function returns a Pandas DataFrame containing the search
-            frequenicy for the inquired seachword 
+            frequency for the inquired seachword 
     '''
     pytrends.build_payload(kw_list, cat=0, timeframe='2018-01-01 2018-12-31', geo='', gprop='')
     searches = pytrends.interest_over_time()
