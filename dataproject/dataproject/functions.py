@@ -19,7 +19,7 @@ def prices(name, start=start, end=end):
     Returns:
             The function returns a Pandas DataFrame containing the Date, High, Low, Close and Volume for the inquired stock 
     '''
-    return pandas_datareader.iex.daily.IEXDailyReader(name, start, end).read()
+                return pandas_datareader.iex.daily.IEXDailyReader(name, start, end).read()
 #%%
 
 def searches(*kw_list):
@@ -34,19 +34,17 @@ def searches(*kw_list):
     '''
     pytrends.build_payload(kw_list, cat=0, timeframe='2018-01-01 2018-12-31', geo='', gprop='')
     searches = pytrends.interest_over_time()
-    return searches.drop(columns = "isPartial")
+                return searches.drop(columns = "isPartial")
 
 
 #%%
 def combine_data_frames(df1, df2):
-   '''    
-    Arguments: 
-
+        '''    
+        Arguments: 
             df1(DataFrame): 1st Pandas DataFrame
             df2(DataFrame): 2nd Pandas DataFrame 
-            
-    Returns:
+        Returns:
             A joined dataframe contraining both dataframes, where the 
             2nd DataFrame is added on the right.
-    '''
+        '''
     return df1.join(df2, how='outer')
