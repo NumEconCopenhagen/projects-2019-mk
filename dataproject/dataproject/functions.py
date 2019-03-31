@@ -8,8 +8,8 @@ pytrends = TrendReq(hl='en-US', tz=360)
 import matplotlib.pyplot as plt
 #%matplotlib inline
 
-start = datetime(2018,1,1)
-end = datetime(2018,12,31)
+start = datetime(2018,1,2)
+end = datetime(2018,3,31)
 
 #%%
 def prices(name, start=start, end=end):
@@ -36,7 +36,7 @@ def searches(*kw_list):
             The function returns a Pandas DataFrame containing the search
             frequency for the inquired seachword 
         '''
-        pytrends.build_payload(kw_list, cat=0, timeframe='2019-1-1 2019-3-31', geo='', gprop='')
+        pytrends.build_payload(kw_list, cat=0, timeframe='2019-1-2 2019-3-31', geo='', gprop='')
         searches = pytrends.interest_over_time()
         return searches.drop(columns = "isPartial")
 
