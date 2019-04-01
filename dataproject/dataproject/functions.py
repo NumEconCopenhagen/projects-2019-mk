@@ -11,7 +11,6 @@ import matplotlib.pyplot as plt
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import matplotlib.dates as mdates
-from matplotlib.finance import candlestick
 import matplotlib
 import pylab
 start = datetime(2018,1,2)
