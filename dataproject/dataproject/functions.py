@@ -63,7 +63,7 @@ def searches(*kw_list):
             The function returns a Pandas DataFrame containing the search
             frequency for the inquired seachword 
         '''
-        pytrends.build_payload(kw_list, cat=0, timeframe='today 3-m', geo='', gprop='')
+        pytrends.build_payload(kw_list, cat=0, timeframe='2018-01-01 2018-12-31', geo='', gprop='')
         searches = pytrends.interest_over_time()
         return searches.drop(columns = "isPartial")
 
