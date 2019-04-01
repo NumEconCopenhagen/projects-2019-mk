@@ -13,8 +13,30 @@ import matplotlib.ticker as mticker
 import matplotlib.dates as mdates
 import matplotlib
 import pylab
+from pandas_datareader import data as pdr
+import fix_yahoo_finance as yf
 start = datetime(2018,1,2)
 end = datetime(2018,3,31)
+
+#%%
+
+def yprices(name, start, end):
+    '''    
+        Arguments: 
+
+            name(string)    : input the ticker for the desired stock
+            start(datetime) : Setting a starting date
+            end(datetime)   : Setting a ending date 
+
+         Returns:
+            The function returns a Pandas DataFrame webscraped from yahoo finance containing the Date, High, Low, Close, Adj close and Volume for the inquired stock 
+            More information can be found at https://github.com/ranaroussi/fix-yahoo-finance
+    '''
+    yf.pdr_override()
+    return pdr.get_data_yahoo(name, start, end)
+
+
+
 
 #%%
 def prices(name, start=start, end=end):
@@ -57,6 +79,11 @@ def combine_data_frames(df1, df2):
             2nd DataFrame is added on the right.
         '''
         return df1.join(df2, how='outer')
+
+
+
+
+
 
 def RSI(prices, n=14):
     '''
