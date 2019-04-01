@@ -1,4 +1,5 @@
-#%%
+#%% 
+import time
 import pandas_datareader
 import pandas as pd
 import numpy as np
@@ -7,10 +8,15 @@ from pytrends.request import TrendReq  #imports pytrends for loading google tren
 pytrends = TrendReq(hl='en-US', tz=360)
 import matplotlib.pyplot as plt
 #%matplotlib inline
-
+import matplotlib.pyplot as plt
+import matplotlib.ticker as mticker
+import matplotlib.dates as mdates
+from matplotlib.finance import candlestick
+import matplotlib
+import pylab
 start = datetime(2018,1,2)
 end = datetime(2018,3,31)
-pd.__version__
+
 #%%
 def prices(name, start=start, end=end):
     '''    
