@@ -80,6 +80,54 @@ def combine_data_frames(df1, df2):
         '''
         return df1.join(df2, how='outer')
 
+def scatterplot(firm):
+    '''
+    Arguments:
+        firmname
+    Returns:
+        A scatterplot of the firms day-to-day closing stockprices
+        against the google trends data associated with the firm'''
+    IBM_nonan = IBM.dropna()
+    return IBM_nonan.plot.scatter(x = "searches", y = "close")
+
+def scatterols(firm):
+    '''
+    Arguments:
+        firmname
+    Returns:
+        Scatterplot but this time with an added simple OLS regression'''
+    fig, ax = plt.subplots()
+    ax.plot(IBM_nonan["searches"], IBM_nonan["close"], "o", label = "Data")
+    ax.set_xlabel("searches")
+    ax.set_ylabel("close")
+    ax.plot(IBM_nonan["searches"],IBM_OLS.fittedvalues, "r", label = "OLS")
+    ax.legend()
+    return plt.show()
+
+def fig(firm):
+    '''
+    Arguments:
+        firmname
+    Returns:
+        A plot containing the firms day-to-day closing stockprice
+        and the google trends data associated with the firm, but controrary 
+        to the "scatterplot" function, they are both plotted against time'''    
+    fig, ax1 = plt.subplots()
+    plt.figure()
+    ax1.plot(firm["searches"])
+    ax1.set_xlabel("Date")
+    ax1.set_ylabel("searches", color = "b")
+    ax1.tick_params("y", colors = "b")
+
+    ax2 = ax1.twinx()
+    ax2.plot(firm["close"], "r")  #Plotting closing price as red.
+    ax2.set_ylabel("price", color = "r")
+    ax2.tick_params("y", colors = "r")
+
+    fig.autofmt_xdate()
+
+    fig.legend(("searches", "closing price"))
+    return plt.show()
 
 
 
