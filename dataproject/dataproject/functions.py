@@ -13,6 +13,7 @@ import matplotlib.ticker as mticker
 import matplotlib.dates as mdates
 import matplotlib
 import pylab
+from statsmodels.formula.api import ols
 from pandas_datareader import data as pdr
 import fix_yahoo_finance as yf
 start = datetime(2018,1,2)
@@ -80,6 +81,12 @@ def combine_data_frames(df1, df2):
         '''
         return df1.join(df2, how='outer')
 
+    
+
+def deletenan(firm):
+    firm_nonan = firm.dropna()
+    return firm_nonan
+    
 def scatterplot(firm):
     '''
     Arguments:
@@ -87,8 +94,15 @@ def scatterplot(firm):
     Returns:
         A scatterplot of the firms day-to-day closing stockprices
         against the google trends data associated with the firm'''
-    IBM_nonan = IBM.dropna()
-    return IBM_nonan.plot.scatter(x = "searches", y = "close")
+    firm_nonan = firm.dropna()
+    return firm_nonan.plot.scatter(x = "searches", y = "close")
+
+
+def OLS(firm):
+    firm_nonan = firm.dropna()
+    firm_OLS = ols("close ~ searches", data = firm_nonan).fit()
+    return firm_OLS.summary()
+
 
 def scatterols(firm):
     '''
@@ -97,10 +111,12 @@ def scatterols(firm):
     Returns:
         Scatterplot but this time with an added simple OLS regression'''
     fig, ax = plt.subplots()
-    ax.plot(IBM_nonan["searches"], IBM_nonan["close"], "o", label = "Data")
+    firm_nonan = firm.dropna()
+    ax.plot(firm_nonan["searches"], firm_nonan["close"], "o", label = "Data")
     ax.set_xlabel("searches")
     ax.set_ylabel("close")
-    ax.plot(IBM_nonan["searches"],IBM_OLS.fittedvalues, "r", label = "OLS")
+    firm_OLS = ols("close ~ searches", data = firm_nonan).fit()
+    ax.plot(firm_nonan["searches"],firm_OLS.fittedvalues, "r", label = "OLS")
     ax.legend()
     return plt.show()
 
@@ -129,7 +145,32 @@ def fig(firm):
     fig.legend(("searches", "closing price"))
     return plt.show()
 
+def bondfig(index, bond):
+    '''
+    Arguments: 
+        Stock index name and bond name
+    Return:
+        A plot plotting the stock index price and bond price 
+        plotted against weeks (in this case 1 year (52 weeks))'''
+    fig, ax1 = plt.subplots()
+    plt.figure()
 
+    ax1.plot(index["Open"])
+    ax1.set_xlabel("Week")
+    ax1.set_ylabel("SPX", color = "b")
+    ax1.tick_params("y", colors = "b")
+
+
+    ax2 = ax1.twinx()
+    ax2.plot(bond["Open"], "r")  #Plotting closing price as red.
+    ax2.set_ylabel("Bond", color = "r")
+    ax2.tick_params("y", colors = "r")
+
+    fig.autofmt_xdate()
+    plt.show()
+
+    fig.autofmt_xdate()
+    return plt.show()
 
 
 
