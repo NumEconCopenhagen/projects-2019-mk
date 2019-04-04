@@ -1,27 +1,35 @@
 #%% 
-import time
+###    Modules    ###
 import pandas_datareader
 import pandas as pd
 import numpy as np
 import os
 from datetime import datetime, timedelta
-from pytrends.request import TrendReq  #imports pytrends for loading google trends data
-pytrends = TrendReq(hl='en-US', tz=360)
-import matplotlib.pyplot as plt
-#%matplotlib inline
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import matplotlib.dates as mdates
 import matplotlib
+import time
+
+#imports pytrends for loading google trends data
+from pytrends.request import TrendReq  
+#Generation a Trend Request with language American English and with a time offset US CST
+pytrends = TrendReq(hl='en-US', tz=360)
+
+# statistical module for doing OLS regressions
 import pylab
 from statsmodels.formula.api import ols
+
+# Module for pandasreader for yahoo
 from pandas_datareader import data as pdr
 import fix_yahoo_finance as yf
 start = datetime(2018,1,2)
 end = datetime(2018,3,31)
 
 #%%
+###    functions    ###
 
+#Alternative price api call suited for yahoo finance, which webscraped the prices
 def yprices(name, start, end):
     '''    
         Arguments: 
@@ -32,7 +40,7 @@ def yprices(name, start, end):
             The function returns a Pandas DataFrame webscraped from yahoo finance containing the Date, High, Low, Close, Adj close and Volume for the inquired stock 
             More information can be found at https://github.com/ranaroussi/fix-yahoo-finance
     '''
-    yf.pdr_override()
+    yf.pdr_override() # Command to override the pandas search function
     return pdr.get_data_yahoo(name, start, end)
 
 
@@ -50,6 +58,7 @@ def prices(name, start=start, end=end):
     '''
     return pandas_datareader.iex.daily.IEXDailyReader(name, start, end).read()
 #%%
+
 
 def searches(*kw_list):
         '''    
@@ -73,7 +82,7 @@ def combine_data_frames(df1, df2):
             df2(DataFrame): 2nd Pandas DataFrame 
         Returns:
             A joined dataframe contraining both dataframes, where the 
-            2nd DataFrame is added on the right.
+            2nd DataFrame is added on the left.
         '''
         return df1.join(df2, how='outer')
 
@@ -175,8 +184,8 @@ def RSI(prices, n=14):
         Arguments:
             prices(float)   : the column index of close values
             period(float)   : Average gain of last 14 trading days 
-                            / Average loss of last 14 trading days which means 
-                            the value should be set to 14
+                              / Average loss of last 14 trading days which means 
+                              the value should be set to 14
         Returns:
             RSI(float)      : indicator if an stock is oversold or bought 
     '''    
@@ -212,7 +221,7 @@ def trendsintervalTSLA(start_date):
             Start_time(datetime)    :   insert datetime date
 
         Returns:
-            Interest_over_time_df(dataframe)    :   Dateframe for google searches on TSLA for the 250 days
+            Interest_over_time_df(dataframe)    :   Dateframe with google searches on TSLA for the 250 days
     '''    
     maxstep = 269
     overlap = 40
@@ -221,7 +230,7 @@ def trendsintervalTSLA(start_date):
     start_date = start_date.date()
     # Login to Google.
     pytrend = TrendReq()
-    # Run the first time (if we want to start from today, otherwise we need to ask for an end_date as well
+    # Run the first time 
     today = datetime.today().date()
     old_date = today
     # Go back in time
@@ -251,7 +260,7 @@ def trendsintervalTSLA(start_date):
             
         # New timeframe
         timeframe = new_date.strftime('%Y-%m-%d')+' '+old_date.strftime('%Y-%m-%d')
-        print(timeframe)
+        print(timeframe) #Printing to make sure that we have the correct date interval
 
         # Download data
         pytrend.build_payload(kw_list=kw_list, timeframe = timeframe)
