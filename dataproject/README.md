@@ -1,32 +1,23 @@
 # Dataproject
 
-Should contain a short introduction to your project, and show how to produce your results.
+The objective with our dataproject is to show how stocks and google searches are related. Our project displays a few different stocks with correspondig google searches - this is not an econometrical excersize by any means - but more so to showcase the use of python to illustrate how data can be compared, and made interactive.  
+We also have a few extra graphs and figures, such as the SPX index against 10-year US bond prices, even though google searches and stock prices on one hand seem far from bond prices, we can work with them very similarily in python.
 
+I order for you to get the same results as us you need to download a few packages though anaconda prompt or alike.
 Needed packages:
+```
 pip install pytrends
 pip install plotly
 pip install cufflinks
 pip install fix_yahoo_finance
+```
 
-
-
-To see the interactive plot the following should be run in the terminal
-
-conda install jupyterlab=0.35 "ipywidgets>=7.2"
-set NODE_OPTIONS=--max-old-space-size=4096
-jupyter labextension install @jupyter-widgets/jupyterlab-manager@0.38 --no-build
-jupyter labextension install plotlywidget@0.8.0 --no-build
-
-Documentation is available at https://github.com/plotly/plotly.py#jupyterlab-support-python-35
+All data you will need is either in the "Data" folder, or is directly downloaded to your computer from IEX or yahoo and alike.
 
 
 
 
-virker det hvis man kun bruger:
-conda install jupyterlab=0.35 "ipywidgets>=7.2"
-set NODE_OPTIONS=--max-old-space-size=4096
-jupyter labextension install @jupyterlab/plotly-extension@0.18.2 --no-build
-jupyter lab build
-set NODE_OPTIONS=
+
+
 
 
