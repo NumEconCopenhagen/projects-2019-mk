@@ -3,7 +3,6 @@ import numpy as np
 import pandas as pd
 import datetime
 import matplotlib.pyplot as plt
-import pandas_datareader as web
 import scipy.stats as scs
 import statsmodels.api as sm
 from pandas_datareader import data as pdr
