@@ -1,16 +1,16 @@
 # Modelproject
 
-# Requirement
+## Requirement
 In order for you to get the same results as us, you need to download the following package though anaconda prompt or alike.
 Needed package:
 ```
 pip install fix_yahoo_finance
 ```
 
-# The CAPM mode
+## The CAPM mode
 Our modelproject creates the CAPM (capital asset pricing model) for a selected numbers of assets. The essence of the CAPM is captured in our last figure (both the interactive and the non-interactive), which showcases the relationsship between different portfolios, and how the return on the riskfree asset comes in to play, when finding the tangent portfolio.
 
-# Overview of the code 
+### Overview of the code 
 The first part of our project creates an overview over the assets and creates variables for later use.
 
 The monte carlo simulation simulates a large amount of different combinations of asset in a porfolio.
