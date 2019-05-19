@@ -3,7 +3,7 @@
 Our project is titled "Does google searches show market movements?", and is about showing how stocks and google searches are related. the project displays a stock Tesla (TSLA) with the correspondig google searches - this is not an econometrical excersize by any means - but more so to showcase the use of python to illustrate how data can be compared, and made interactive.  
 We also have a few extra graphs and figures, such as the SPX index against 10-year US bond prices, even though google searches and stock prices on one hand seem far from bond prices, we can work with them very similarily in python.
 ## Project
-The movements can be seen from running [Dataproject.ipynb](Dataproject.ipynb)
+The movements can be seen from running [dataproject.ipynb](dataproject.ipynb)
 ### Data
 The project loads two csv files:
 
