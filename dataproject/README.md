@@ -1,20 +1,23 @@
 # Dataproject
 
-The objective with our dataproject is to show how stocks and google searches are related. Our project displays a few different stocks with correspondig google searches - this is not an econometrical excersize by any means - but more so to showcase the use of python to illustrate how data can be compared, and made interactive.  
+Our project is titled "Does google searches show market movements?", and is about showing how stocks and google searches are related. the project displays a stock Tesla (TSLA) with the correspondig google searches - this is not an econometrical excersize by any means - but more so to showcase the use of python to illustrate how data can be compared, and made interactive.  
 We also have a few extra graphs and figures, such as the SPX index against 10-year US bond prices, even though google searches and stock prices on one hand seem far from bond prices, we can work with them very similarily in python.
+## Project
+The movements can be seen from running [Dataproject.ipynb](Dataproject.ipynb)
+### Data
+The project loads two csv files:
 
-I order for you to get the same results as us you need to download a few packages though anaconda prompt or alike.
-Needed packages:
+1. 10 year bond Weekly.csv downloaded from finance.yahoo.com/quote/%5ETNX/history?period1=1514761200&period2=1546210800&interval=1wk&filter=history&frequency=1wk
+2. SPX-weekly-2018.csv downloaded from https://finance.yahoo.com/quote/%5EGSPC/history?period1=1514761200&period2=1546210800&interval=1wk&filter=history&frequency=1wk
+
+## Dependencies
+Apart from a standard Anaconda Python 3 installation the project requires the following installations:
 ```
 pip install pytrends
 pip install plotly
 pip install cufflinks
 pip install fix_yahoo_finance
 ```
-
-All data you will need is either in the "Data" folder, or is directly downloaded to your computer from IEX or yahoo and alike.
-
-
 
 
 
