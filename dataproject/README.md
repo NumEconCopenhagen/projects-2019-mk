@@ -8,7 +8,7 @@ The movements can be seen from running [dataproject.ipynb](https://github.com/Nu
 The project loads two csv files:
 
 1. 10 year bond Weekly.csv downloaded from finance.yahoo.com/quote/%5ETNX/history?period1=1514761200&period2=1546210800&interval=1wk&filter=history&frequency=1wk
-2. SPX-weekly-2018.csv downloaded from https://finance.yahoo.com/quote/%5EGSPC/history?period1=1514761200&period2=1546210800&interval=1wk&filter=history&frequency=1wk
+2. SPX-weekly-2018.csv downloaded from finance.yahoo.com/quote/%5EGSPC/history?period1=1514761200&period2=1546210800&interval=1wk&filter=history&frequency=1wk
 
 ## Dependencies
 Apart from a standard Anaconda Python 3 installation the project requires the following installations:
