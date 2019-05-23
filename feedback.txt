@@ -1,0 +1,6 @@
+PNC486 feedback
+
+https://github.com/NumEconCopenhagen/projects-2019-hbp/issues/1
+https://github.com/NumEconCopenhagen/projects-2019-raj/issues/3
+https://github.com/NumEconCopenhagen/projects-2019-remove-argv-0/issues/5
+https://github.com/NumEconCopenhagen/projects-2019-ccl/issues/7
