@@ -8,4 +8,4 @@ Our project consist of 3 major exercies:
 2) We solve an AS-AD model and take a look at different gabs when experiencing shocks
 3) We look at an exchange economy with 50.000 users, and have a look at their utility.
 
-Good reading
+We hope you enjoy reading through our project.
