@@ -4,3 +4,11 @@ https://github.com/NumEconCopenhagen/projects-2019-hbp/issues/1
 https://github.com/NumEconCopenhagen/projects-2019-raj/issues/3
 https://github.com/NumEconCopenhagen/projects-2019-remove-argv-0/issues/5
 https://github.com/NumEconCopenhagen/projects-2019-ccl/issues/7
+
+
+GVH953 feedback
+
+https://github.com/NumEconCopenhagen/projects-2019-wms/issues/7
+https://github.com/NumEconCopenhagen/projects-2019-jl/issues/2 
+https://github.com/NumEconCopenhagen/projects-2019-peter-larsens-kaffe-m-havre/issues/5
+https://github.com/NumEconCopenhagen/projects-2019-tba/issues/10
